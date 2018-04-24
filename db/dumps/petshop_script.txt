@@ -1,0 +1,82 @@
+-- Database: petshop
+
+-- DROP DATABASE petshop;
+
+CREATE DATABASE petshop
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+	
+
+CREATE SEQUENCE public."Orders_id_seq"
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public."Orders_id_seq"
+    OWNER TO postgres;
+	
+CREATE SEQUENCE public."Pets_id_seq"
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public."Pets_id_seq"
+    OWNER TO postgres;
+	
+-- Table: public."Pets"
+
+-- DROP TABLE public."Pets";
+
+CREATE TABLE public."Pets"
+(
+    id bigint NOT NULL DEFAULT nextval('"Pets_id_seq"'::regclass),
+    name text COLLATE pg_catalog."default" NOT NULL,
+    photo text COLLATE pg_catalog."default",
+    tags text COLLATE pg_catalog."default",
+    "createdAt" date,
+    "updatedAt" date,
+    CONSTRAINT "Pets_pkey" PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."Pets"
+    OWNER to postgres;
+	
+-- Table: public."Orders"
+
+-- DROP TABLE public."Orders";
+
+CREATE TABLE public."Orders"
+(
+    id bigint NOT NULL DEFAULT nextval('"Orders_id_seq"'::regclass),
+    quantity integer NOT NULL,
+    "shipDate" date NOT NULL,
+    status integer NOT NULL,
+    "createdAt" date,
+    "updatedAt" date,
+    "petId" bigint NOT NULL,
+    CONSTRAINT "Orders_pkey" PRIMARY KEY (id),
+    CONSTRAINT "pet_order_FK" FOREIGN KEY ("petId")
+        REFERENCES public."Pets" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."Orders"
+    OWNER to postgres;
