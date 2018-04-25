@@ -5,7 +5,6 @@ export const pets = Router();
 
 pets.get('/', async (req, res, next) => {
   try {
-    console.log('kiwi');
     const pets = await Pet.scope(req.query['scope']).findAll();
     res.status(200).json(pets);
   } catch (e) {

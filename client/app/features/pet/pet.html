@@ -11,16 +11,18 @@
 <div class="container">
 
 	<div class="jumbotron text-center">
-		<h1>Pet Count <span class="label label-info">{{ pet.pets.length }}</span></h1>
+		<h1>Pet Count <span class="label label-info">{{ petController.pets.length }}</span></h1>
 	</div>
 
 	<div class="pet-list row">
 		<div class="col-sm-4 col-sm-offset-4">
 
-			<div class="checkbox" ng-repeat="petObj in pet.pets">
+			<div class="checkbox" ng-repeat="petObj in petController.pets">
 				<label>
 					<!-- exercicio -->
-					<input type="checkbox" ng-click="pet.deletePet(petObj.id)"> {{ petObj.name }}
+					<input type="checkbox" > Name: {{ petObj.name }} - Tags: {{ petObj.tags }}
+					<button type="submit" ng-click="petController.deletePet(petObj.id)">Delete Pet</button>
+					<button type="submit" ng-click="petController.goToOrder(petObj.id)">Add Order</button>
 				</label>
 			</div>
 
@@ -31,10 +33,10 @@
 		<div class="col-sm-8, col-sm-offset-2, text-center">
 			<form>
 				<div class="form-group">
-					<input type="text" class="form-control input-lg text-center" placeholder="Enter with a text" ng-model="pet.formData.name">
+					<input type="text" class="form-control input-lg text-center" placeholder="Enter with a text" ng-model="petController.formData.name">
 				</div>
 
-				<button type="submit" class="btn btn-primary btn-lg" ng-click="pet.createPet()">Add</button>
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="petController.createPet()">Add</button>
 			</form>
 		</div>
 	</div>

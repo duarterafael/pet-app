@@ -12,20 +12,22 @@
 
 	"use strict"
 
-	angular.module('petShopApp').controller('PetController', PetController);
-	PetController.$inject = ['petService', '$location'];
+	angular.module('petShopApp').controller('OrderController', OrderController);
+	OrderController.$inject = ['orderService', '$routeParams'];
 
-	function PetController(petService, $location) {
+	function OrderController(orderService, $routeParams) {
 
 		const self = this;
 
 		self.formData = {};
+		self.formData.petId = $routeParams.id;
+		self.formData.shipDate ='2018-04-25 00:36:56.042 +00:00';
 
-		getPets();
+		getOrdersByPet(self.formData.petId);
 
-		self.createPet = function () {
-			petService.createPet().execute(self.formData).$promise.then(response => {
-				self.pets.push(response);
+		self.createOrder = function () {
+			orderService.createOrder().execute(self.formData).$promise.then(response => {
+				self.orders.push(response);
 				self.formData = {}
 			}, error => {
 				//TODO error handler
@@ -33,9 +35,9 @@
 			});			
 		};
 
-		self.deletePet = function (id) {
-			petService.deletePet().execute({id: id}).$promise.then(data => {
-				self.pets = self.pets.filter(function(el) {
+		self.deleteOrder = function (id) {
+			orderService.deleteOrder().execute({id: id}).$promise.then(data => {
+				self.orders = self.orders.filter(function(el) {
 					return el.id !== id;
 				});
 			}, error => {
@@ -44,17 +46,13 @@
 			});
 		};
 
-		function getPets() {
-			petService.getPets().execute().$promise.then(data => {
-				self.pets = data;
+		function getOrdersByPet(petId) {
+			orderService.getOrdersByPet().execute({petId: petId}).$promise.then(data => {
+				self.orders = data;
 			}, error => {
 				//TODO error handler
 				console.log(error);
 			});
 		}
-
-		self.goToOrder = function (id) {
-			$location.path('/order/' + id);
-		};
 	}
 })();

@@ -1,0 +1,43 @@
+<!-- 
+ * Copyright (c) 2018 Samsung Electronics Co., Ltd. , (c) Center of Informatics
+ * Federal University of Pernambuco.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information of Samsung
+ * Electronics, Inc. ("Confidential Information").  You shall not disclose such
+ * Confidential Information and shall use it only in accordance with the terms
+ * of the license agreement you entered into with Samsung Electronics.
+-->
+<div class="container">
+
+	<div class="jumbotron text-center">
+		<h1>Order Count <span class="label label-info">{{ orderController.orders.length }}</span></h1>
+	</div>
+
+	<div class="order-list row">
+		<div class="col-sm-4 col-sm-offset-4">
+
+			<div class="checkbox" ng-repeat="orderObj in orderController.orders">
+				<label>
+					<!-- exercicio -->
+					<input type="checkbox" > Status: {{ orderObj.status }} - Quantity: {{ orderObj.quantity }}
+					<button type="submit" ng-click="orderController.deleteOrder(orderObj.id)">Delete Order</button>
+				</label>
+			</div>
+
+		</div>
+	</div>
+	
+	<div class="order-container__form row">
+		<div class="col-sm-8, col-sm-offset-2, text-center">
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control input-lg text-center" placeholder="Enter with a quantity" ng-model="orderController.formData.quantity">
+					<input type="text" class="form-control input-lg text-center" placeholder="Enter with a status" ng-model="orderController.formData.status">
+				</div>
+
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="orderController.createOrder()">Add</button>
+			</form>
+		</div>
+	</div>
+</div>

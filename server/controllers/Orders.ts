@@ -5,7 +5,6 @@ export const orders = Router();
 
 orders.get('/', async (req, res, next) => {
   try {
-    console.log('kiwi de order');
     const orders = await Order.scope(req.query['scope']).findAll();
     res.status(200).json(orders);
   } catch (e) {
@@ -24,7 +23,10 @@ orders.post('', async (req, res, next) => {
 
 orders.get('/:id', async (req, res, next) => {
     try {
-        const orders = await Order.scope(req.query['scope']).findById(req.params['id']);
+        console.log(req.params['id']);
+        const orders = await Order.scope(req.query['scope']).findAll({where: {
+            petId: req.params.id
+        }});
         res.status(200).json(orders);
     } catch (e) {
         next(e);
@@ -38,8 +40,6 @@ orders.delete('/:id', async (req, res, next) => {
             id: req.params.id
         }
     })
-      
-      //destroy(req.params['id']);
       res.status(200).json(orders);
   } catch (e) {
       next(e);

@@ -19,11 +19,11 @@
 		$routeProvider.when('/', {
 			templateUrl: './features/pet/pet.html',
 			controller: 'PetController',
-			controllerAs: 'pet'
-		}).when('/', {
+			controllerAs: 'petController'
+		}).when('/order/:id', {
 			templateUrl: './features/order/order.html',
 			controller: 'OrderController',
-			controllerAs: 'order'
+			controllerAs: 'orderController'
 		}).
 		otherwise({
 			redirectTo: '/'
