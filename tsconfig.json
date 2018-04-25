@@ -11,7 +11,8 @@
     "declaration": false,
     "pretty": true,
     "outDir": "./dist",
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false
   },
   "include": [
     "server/**/*.ts"

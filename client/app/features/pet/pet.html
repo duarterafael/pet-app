@@ -1,0 +1,41 @@
+<!-- 
+ * Copyright (c) 2018 Samsung Electronics Co., Ltd. , (c) Center of Informatics
+ * Federal University of Pernambuco.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information of Samsung
+ * Electronics, Inc. ("Confidential Information").  You shall not disclose such
+ * Confidential Information and shall use it only in accordance with the terms
+ * of the license agreement you entered into with Samsung Electronics.
+-->
+<div class="container">
+
+	<div class="jumbotron text-center">
+		<h1>Pet Count <span class="label label-info">{{ pet.pets.length }}</span></h1>
+	</div>
+
+	<div class="pet-list row">
+		<div class="col-sm-4 col-sm-offset-4">
+
+			<div class="checkbox" ng-repeat="petObj in pet.pets">
+				<label>
+					<!-- exercicio -->
+					<input type="checkbox" ng-click="pet.deletePet(petObj.id)"> {{ petObj.name }}
+				</label>
+			</div>
+
+		</div>
+	</div>
+	
+	<div class="pet-container__form row">
+		<div class="col-sm-8, col-sm-offset-2, text-center">
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control input-lg text-center" placeholder="Enter with a text" ng-model="pet.formData.name">
+				</div>
+
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="pet.createPet()">Add</button>
+			</form>
+		</div>
+	</div>
+</div>

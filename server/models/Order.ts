@@ -1,25 +1,25 @@
-import {Model, Column, Table, CreatedAt, UpdatedAt, BelongsTo, ForeignKey, Default, DataType} from "sequelize-typescript";
+import {Model, Column, Table, CreatedAt, UpdatedAt, BelongsTo, ForeignKey} from "sequelize-typescript";
 import {Pet} from "./Pet";
-import {OrderStatus} from "./OrderStatus";
+//import {OrderStatus} from "./OrderStatus";
 
 
 @Table
-export class Order extends Model<Order>{
+export class Order extends Model<Order>
+{
     @Column
     quantity: number;
 
     @Column
     shipDate: Date;
 
-    @Default(OrderStatus.PLACED.toString())
-    @Column(DataType.ENUM('OrderStatus'))
-    status: OrderStatus;
+    //@Default(OrderStatus.PLACED.toString())
+    @Column//(DataType.ENUM('OrderStatus'))
+    status: number;
 
     @ForeignKey(() => Pet)
-    @Column
+    @Column({field: 'petId'})
     petId: number;
 
-    @Column
     @BelongsTo (() => Pet)
     pet: Pet;
 
@@ -31,4 +31,9 @@ export class Order extends Model<Order>{
     @Column
     updatedAt: Date;
     
+    static scope(...args: any[]): typeof Order {
+        args[0] = args[0] || 'defaultScope';
+        return super.scope.call(this, ...args);
+    }
+
 }

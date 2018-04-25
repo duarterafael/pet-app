@@ -2,13 +2,14 @@
   "name": "test-app-seq",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.ts",
   "scripts": {
     "test": "./node_modules/.bin/jest",
     "sequelize": "./node_modules/.bin/sequelize",
-    "server": "nodemon ./bin/www",
+    "server": "nodemon ./bin/server",
     "build": "./node_modules/.bin/webpack --config ./webpack.config.js --env development",
-    "build:server": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --env development"
+    "build:server": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --env development",
+    "start": "node --require ts-node/register index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -23,8 +24,13 @@
     "node-fetch": "^2.1.2",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
+    "reflect-metadata": "^0.1.12",
     "sequelize": "^4.37.6",
-    "sequelize-cli": "^4.0.0"
+    "sequelize-cli": "^4.0.0",
+    "sequelize-typescript": "^0.6.4",
+    "strong-error-handler": "^2.3.2",
+    "ts-node": "^6.0.0",
+    "typescript": "^2.8.3"
   },
   "devDependencies": {
     "autoprefixer": "^8.3.0",
