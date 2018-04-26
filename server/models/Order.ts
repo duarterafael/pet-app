@@ -2,8 +2,7 @@ import {Model, Column, Table, CreatedAt, UpdatedAt, BelongsTo, ForeignKey} from 
 import {Pet} from "./Pet";
 //import {OrderStatus} from "./OrderStatus";
 
-
-@Table
+@Table({tableName: 'Orders'})
 export class Order extends Model<Order>
 {
     @Column
@@ -12,9 +11,8 @@ export class Order extends Model<Order>
     @Column
     shipDate: Date;
 
-    //@Default(OrderStatus.PLACED.toString())
-    @Column//(DataType.ENUM('OrderStatus'))
-    status: number;
+    @Column
+    status: number; //OrderStatus;
 
     @ForeignKey(() => Pet)
     @Column({field: 'petId'})

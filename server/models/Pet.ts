@@ -1,7 +1,7 @@
 import {Model, Column, Table, CreatedAt, UpdatedAt, HasMany} from "sequelize-typescript";
 import { Order } from "./Order";
 
-@Table
+@Table({tableName: 'Pets'})
 export class Pet extends Model<Pet>{
     @Column
     name: string;
@@ -27,5 +27,4 @@ export class Pet extends Model<Pet>{
         args[0] = args[0] || 'defaultScope';
         return super.scope.call(this, ...args);
     }
-
 }
