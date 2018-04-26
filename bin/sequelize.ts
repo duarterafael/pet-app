@@ -6,6 +6,6 @@ export const sequelize = new Sequelize({
   username: 'postgres',
   password: 'root',
   port:5432,
-  modelPaths: ['D:/New-Pet/pet-app/server/models']
+  modelPaths: ['D:/Estudos/pet-app/server/models']
   
 });
