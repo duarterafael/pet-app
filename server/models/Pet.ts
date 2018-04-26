@@ -7,8 +7,7 @@ import { Order } from "./Order";
  * @property {integer} y.required
  * @property {string} color
  */
-@Table
-export class Pet extends Model<Pet>{
+@Table({tableName: 'Pets'})export class Pet extends Model<Pet>{
     @Column
     name: string;
 
@@ -33,5 +32,4 @@ export class Pet extends Model<Pet>{
         args[0] = args[0] || 'defaultScope';
         return super.scope.call(this, ...args);
     }
-
 }

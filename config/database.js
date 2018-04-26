@@ -1,9 +1,10 @@
 const database = {
   development: {
     username: process.env.DATABASE_USERNAME || 'postgres',
-    password: process.env.DATABASE_PASSWORD || '123456',
-    database: process.env.DATABASE_NAME || 'todo_mvc',
+    password: process.env.DATABASE_PASSWORD || 'admin',
+    database: process.env.DATABASE_NAME || 'petshop',
     host:  process.env.DATABASE_HOST || '0.0.0.0',
+    port: process.env.DATABASE_PORT || 5432,
     dialect: 'postgres',
     pool: {
       max: 5,
@@ -17,6 +18,7 @@ const database = {
     password: process.env.DATABASE_PASSWORD_TEST || 'root',
     database: process.env.DATABASE_NAME_TEST || 'test',
     host: process.env.DATABASE_HOST_TEST || '0.0.0.0',
+    port: process.env.DATABASE_PORT_TEST || 5432,
     dialect: 'postgres',
     pool: {
       max: process.env.POLL_MAX || 10,
@@ -30,6 +32,7 @@ const database = {
     password: process.env.DATABASE_PASSWORD_PRO,
     database: process.env.DATABASE_NAME_PRO,
     host: process.env.DATABASE_HOST_PRO,
+    port: process.env.DATABASE_PORT_PRO || 5432,
     dialect: 'postgres',
     pool: {
       max: 10,
