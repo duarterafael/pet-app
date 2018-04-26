@@ -1,11 +1,12 @@
 import {Sequelize} from 'sequelize-typescript';
 import * as path from 'path';
+import * as database from '../config/database';
 
 export const sequelize = new Sequelize({
-  dialect: 'postgres',
-  database: 'petshop',
-  username: 'postgres',
-  password: 'admin',
-  port: 5432,
+  dialect: database.development.dialect,
+  database: database.development.database,
+  username: database.development.username,
+  password: database.development.password,
+  port: database.development.port,
   modelPaths: [path.resolve('server/models')]
 });
