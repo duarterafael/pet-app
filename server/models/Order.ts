@@ -28,10 +28,4 @@ export class Order extends Model<Order>
     @UpdatedAt
     @Column
     updatedAt: Date;
-    
-    static scope(...args: any[]): typeof Order {
-        args[0] = args[0] || 'defaultScope';
-        return super.scope.call(this, ...args);
-    }
-
 }

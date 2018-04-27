@@ -22,9 +22,4 @@ export class Pet extends Model<Pet>{
 
     @HasMany(() => Order)
     orders: Order[];
-
-    static scope(...args: any[]): typeof Pet {
-        args[0] = args[0] || 'defaultScope';
-        return super.scope.call(this, ...args);
-    }
 }

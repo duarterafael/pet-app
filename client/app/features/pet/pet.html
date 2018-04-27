@@ -4,15 +4,15 @@
 		<h1>Pet Count <span class="label label-info">{{ petController.pets.length }}</span></h1>
 	</div>
 
-	<div class="pet-list row">
+	<div class="pet-container__list row">
 		<div class="col-sm-4 col-sm-offset-4">
 
 			<div class="checkbox" ng-repeat="petObj in petController.pets">
 				<label>
 					<!-- exercicio -->
 					<input type="checkbox" > Name: {{ petObj.name }} - Tags: {{ petObj.tags }}
-					<button type="submit" ng-click="petController.deletePet(petObj.id)">Delete Pet</button>
-					<button type="submit" ng-click="petController.goToOrder(petObj.id)">Add Order</button>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="petController.deletePet(petObj.id)">Delete Pet</button>
+					<button type="submit" class="btn btn-primary btn-lg " ng-click="petController.goToOrder(petObj.id)">Add Order</button>
 				</label>
 			</div>
 
