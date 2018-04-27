@@ -5,3 +5,7 @@
 .order-container__list {
     margin-bottom: 30px;
 }
+
+.order-container__btn {
+    font-size: 10px !important;
+}
