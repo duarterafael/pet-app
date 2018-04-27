@@ -1,8 +1,13 @@
 import {Model, Column, Table, CreatedAt, UpdatedAt, HasMany} from "sequelize-typescript";
 import { Order } from "./Order";
 
-@Table({tableName: 'Pets'})
-export class Pet extends Model<Pet>{
+/**
+ * @typedef Pet
+ * @property {integer} x.required
+ * @property {integer} y.required
+ * @property {string} color
+ */
+@Table({tableName: 'Pets'})export class Pet extends Model<Pet>{
     @Column
     name: string;
 
