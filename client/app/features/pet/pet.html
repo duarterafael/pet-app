@@ -9,7 +9,6 @@
 
 			<div class="checkbox" ng-repeat="petObj in petController.pets">
 				<label>
-					<!-- exercicio -->
 					<input type="checkbox" > Name: {{ petObj.name }} - Tags: {{ petObj.tags }}
 					<button type="submit" class="btn btn-primary btn-lg pet-container__btn" ng-click="petController.deletePet(petObj.id)">Delete Pet</button>
 					<button type="submit" class="btn btn-primary btn-lg pet-container__btn" ng-click="petController.goToOrder(petObj.id)">Add Order</button>

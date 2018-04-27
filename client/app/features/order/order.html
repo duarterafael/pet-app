@@ -9,7 +9,6 @@
 
 			<div class="checkbox" ng-repeat="orderObj in orderController.orders">
 				<label>
-					<!-- exercicio -->
 					<input type="checkbox" > Status: {{ orderObj.status }} - Quantity: {{ orderObj.quantity }}
 					<button type="submit" ng-click="orderController.deleteOrder(orderObj.id)">Delete Order</button>
 				</label>
