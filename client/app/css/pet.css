@@ -5,3 +5,7 @@
 .pet-container__list {
     margin-bottom: 30px;
 }
+
+.pet-container__btn {
+    font-size: 10px !important;
+}
